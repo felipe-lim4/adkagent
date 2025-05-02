@@ -1,0 +1,6 @@
+google-adk
+pandas
+pandasql
+matplotlib
+streamlit
+openpyxl

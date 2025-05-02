@@ -1,5 +1,7 @@
 from google.adk.agents import Agent
 from .adktools import *
+
+
 class AdkAgent:
     def __init__(self, llm, df):
       self._llm = llm
@@ -25,14 +27,25 @@ class AdkAgent:
             """
             return self.df
 
-      _agents = Agent(
-        name="",
-        model="",
+      self._agents = Agent(
+        name="akdagent",
+        model=self._llm,
         description=(
-            ""
+            "Agente que responde perguntas simples"
         ),
         instruction=(
-            ""
+            "Você é um agente que responde perguntas do usuario de forma simples"
         ),
-        tools=[get_df,],
+        tools=[],
       )
+
+    @property
+    def agent(self):
+        if self._agents is None:
+            self._create_agents()
+        return self._agents
+    
+    def run(self, query: str) -> str:
+        mensagem = f"Responda esta pergunta do usuario {query}"
+
+        return self._agent.predict(user_input=mensagem)
