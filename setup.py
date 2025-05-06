@@ -18,9 +18,10 @@ setup(
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     install_requires=[
-        "google-adk"
+        "google-adk",
         "pandas",
         "pandasql",
+        "python-dotenv",
         "matplotlib",
         "streamlit",
         "openpyxl"
